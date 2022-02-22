@@ -273,7 +273,7 @@ commit_workflow_filters: &commit_workflow_filters
   scheduled-workflow: false
 
 workflows:
-  build_test_deploy_timeline2:
+  build_test_deploy_timeline4:
     triggers:
       - schedule:
           # 1st of month
@@ -283,35 +283,7 @@ workflows:
               only:
                 - master
     jobs:
-      - publish_redis:          *cron_workflow_filters
-      - publish_mariadb:        *cron_workflow_filters
-      - publish_mysql:          *cron_workflow_filters
-      - publish_mongo:          *cron_workflow_filters
-      - publish_jruby:          *commit_workflow_filters
       - publish_clojure:        *cron_workflow_filters
-      - publish_dynamodb:       *cron_workflow_filters
-      - publish_buildpack-deps: *commit_workflow_filters
-      - publish_erlang:         *commit_workflow_filters
-  build_test_deploy_timeline3:
-    triggers:
-      - schedule:
-          # 15th of month
-          cron: "0 0 15 * *"
-          filters:
-            branches:
-              only:
-                - master
-    jobs:
-      - publish_redis:          *cron_workflow_filters
-      - publish_mariadb:        *cron_workflow_filters
-      - publish_mysql:          *cron_workflow_filters
-      - publish_mongo:          *cron_workflow_filters
-      - publish_jruby:          *commit_workflow_filters
-      - publish_clojure:        *cron_workflow_filters
-      - publish_dynamodb:       *cron_workflow_filters
-      - publish_buildpack-deps: *commit_workflow_filters
-      - publish_erlang:         *commit_workflow_filters
-
   commit:
     jobs:
       #- circle-compare-url/reconstruct:
