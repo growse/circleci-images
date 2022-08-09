@@ -77,7 +77,7 @@ if __name__ == "__main__":
     wait_for('Device', device_ready)
     wait_for('Shell', shell_ready)
     wait_for_sys_prop('Boot animation complete', 'init.svc.bootanim', 'stopped')
-    wait_for_sys_prop('Boot animation exited', 'service.bootanim.exit', '1')
+    #wait_for_sys_prop('Boot animation exited', 'service.bootanim.exit', '1')
     wait_for_sys_prop('System boot complete', 'sys.boot_completed', '1')
     wait_for_sys_prop('GSM Ready', 'gsm.sim.state', 'READY')
     #wait_for_sys_prop('init.svc.clear-bcb' ,'init.svc.clear-bcb', 'stopped')
